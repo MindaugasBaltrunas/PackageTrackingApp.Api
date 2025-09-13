@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PackageTrackingApp.Data\PackageTrackingApp.Data.csproj" />
     <ProjectReference Include="..\PackageTrackingApp.Domain\PackageTrackingApp.Domain.csproj" />
   </ItemGroup>
 

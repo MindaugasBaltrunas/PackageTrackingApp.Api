@@ -8,7 +8,9 @@ namespace PackageTrackingApp.Service.MapperProfile
     {
         public MapperProfile()
         {
-            CreateMap<PackageRequest, Package>().ReverseMap().ReverseMap(); 
+            CreateMap<PackageRequest, Package>();
+
+            CreateMap<Package, PackageResponse>();
         }
 
     }

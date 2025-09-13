@@ -20,6 +20,11 @@ namespace PackageTrackingApp.Data.Repositories
             await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
             return entity;
-        } 
+        }
+
+        public virtual async Task<T?> GetByIdAsync(Guid id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
     }
 }
