@@ -43,6 +43,12 @@ namespace PackageTrackingApp.Api.Controllers
             return Ok(result);
         }
 
-
+        [HttpGet("history/{id}")]
+        public async Task<IActionResult> GetPackageHistory(string id)
+        {
+            var resul = await _packageService.GetStatusHistory(id);
+            return Ok(resul);
+        }
+ 
     }
 }

@@ -31,8 +31,7 @@ namespace PackageTrackingApp.Data.Repositories
 
         public async Task<Package?> GetAsync(Guid id)
         {
-
-            return await _context.Packages.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _context.Packages.Include(p => p.StatusHistory).Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task<List<Package>> FilterAllAsync(string? trackingNumber, PackageStatus? status)
@@ -46,15 +45,15 @@ namespace PackageTrackingApp.Data.Repositories
 
             if (status.HasValue)
             {
-    
+
                 query = query.Where(p => p.CurrentStatus == status.Value);
 
             }
             return await query.ToListAsync();
         }
 
-        public async Task<Package?> ExchangeAsync(PackageStatus status, Package package )
-        {      
+        public async Task<Package?> ExchangeAsync(PackageStatus status, Package package)
+        {
 
             package.StatusHistory.Add(new PackageStatusHistory
             {
@@ -73,3 +72,4 @@ namespace PackageTrackingApp.Data.Repositories
     }
 }
 
+ 

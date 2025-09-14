@@ -2,7 +2,6 @@
 using AutoMapper;
 using FluentValidation;
 using PackageTrackingApp.Domain.Entities;
-using PackageTrackingApp.Domain.Exceptions;
 using PackageTrackingApp.Domain.Interfaces;
 using PackageTrackingApp.Service.Dtos;
 using PackageTrackingApp.Service.Interfaces;
@@ -20,7 +19,7 @@ namespace PackageTrackingApp.Service.Services
         private readonly IValidStatusTransition _validStatusTransitionValidator;
 
         public PackageService(IPackageRepository packageRepository,
-            IValidator<PackageRequest> packegeValidator,
+            IValidator<PackageRequest> packageValidator,
             IMapper mapper,
             IResultFactory resultFactory,
             IBaseRepository<Sender> senderRepository,
@@ -28,13 +27,13 @@ namespace PackageTrackingApp.Service.Services
             IValidStatusTransition validStatusTransitionValidator
             )
         {
-            _packageRepository = packageRepository;
-            _packageValidator = packegeValidator;
-            _mapper = mapper;
-            _resultFactory = resultFactory;
-            _senderRepository = senderRepository;
-            _recipientRepository = recipientRepository;
-            _validStatusTransitionValidator = validStatusTransitionValidator;
+            _packageRepository = packageRepository ?? throw new ArgumentNullException(nameof(packageRepository));
+            _packageValidator = packageValidator ?? throw new ArgumentNullException(nameof(packageValidator));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _resultFactory = resultFactory ?? throw new ArgumentNullException(nameof(resultFactory));
+            _senderRepository = senderRepository ?? throw new ArgumentNullException(nameof(senderRepository));
+            _recipientRepository = recipientRepository ?? throw new ArgumentNullException(nameof(recipientRepository));
+            _validStatusTransitionValidator = validStatusTransitionValidator ?? throw new ArgumentNullException(nameof(validStatusTransitionValidator));
         }
 
         public async Task<Result<PackageResponse>> AddPackageAsync(PackageRequest package)
@@ -46,14 +45,19 @@ namespace PackageTrackingApp.Service.Services
                 return _resultFactory.CreateFailure<PackageResponse>(errors);
             }
 
-            var sender = _senderRepository.GetByIdAsync(package.SenderId) ?? throw new EntityNotFoundException("sender dose not exist");
-            var recipient = _recipientRepository.GetByIdAsync(package.RecipientId) ?? throw new EntityNotFoundException("recipient dose not exist");
+            var sender = await _senderRepository.GetByIdAsync(package.SenderId);
+            if (sender == null)
+                return _resultFactory.CreateFailure<PackageResponse>("Sender does not exist");
+
+            var recipient = await _recipientRepository.GetByIdAsync(package.RecipientId);
+            if (recipient == null)
+                return _resultFactory.CreateFailure<PackageResponse>("Recipient does not exist");
 
             try
             {
                 var packageEntity = _mapper.Map<Package>(package);
                 packageEntity.CreatedAt = DateTime.UtcNow;
-                packageEntity.CurrentStatus = 0;
+                packageEntity.CurrentStatus = PackageStatus.Created;
 
                 var resposePackage = await _packageRepository.AddAsync(packageEntity);
 
@@ -145,5 +149,18 @@ namespace PackageTrackingApp.Service.Services
             return new Result<List<PackageResponse>>(packageResponses);
         }
 
+        public async Task<Result<List<PackageStatusHistoryResponse>>> GetStatusHistory(string packageId)
+        {
+            if (!Guid.TryParse(packageId, out var id))
+                return new Result<List<PackageStatusHistoryResponse>>("Invalid packageId");
+
+            var package = await _packageRepository.GetAsync(id);
+            if (package == null)
+                return new Result<List<PackageStatusHistoryResponse>>("package not found");
+
+            var result = _mapper.Map<List<PackageStatusHistoryResponse>>(package.StatusHistory);
+
+            return new Result<List<PackageStatusHistoryResponse>>(result);
+        }
     }
 }
