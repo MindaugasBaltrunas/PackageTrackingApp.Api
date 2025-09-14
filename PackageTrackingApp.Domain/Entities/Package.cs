@@ -15,7 +15,7 @@ namespace PackageTrackingApp.Domain.Entities
         public required Sender Sender { get; set; }
 
         public Guid RecipientId { get; set; }
-        public required Sender Recipient { get; set; }
+        public required Recipient Recipient { get; set; }
 
         public required ICollection<PackageStatusHistory> StatusHistory { get; set; }
     }
