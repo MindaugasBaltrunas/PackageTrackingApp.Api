@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using PackageTrackingApp.Data.Context;
 using PackageTrackingApp.Data.Repositories;
-using PackageTrackingApp.Domain.Entities;
 using PackageTrackingApp.Domain.Interfaces;
 using PackageTrackingApp.Service.Dtos;
 using PackageTrackingApp.Service.Interfaces;
@@ -36,6 +35,7 @@ namespace PackageTrackingApp.Api
 
             // FluentValidation - register all validators in assembly
             services.AddValidatorsFromAssemblyContaining<PackageValidator>();
+            services.AddScoped<IValidStatusTransition, IsValidStatusTransition>();
 
             // CORS Configuration
             services.AddCors(options =>

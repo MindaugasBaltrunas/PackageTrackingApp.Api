@@ -7,7 +7,8 @@ namespace PackageTrackingApp.Domain.Interfaces
     {
         Task<Package> AddAsync(Package package);
         Task<List<Package>> GetAllAsync();
-        Task<List<Package>> FilterAllAsync(int? trackingNumber, string? status);
-        Task<Package?> ExchangeAsync(PackageStatus status, Guid id);
+        Task<Package?> GetAsync(Guid id);
+        Task<List<Package>> FilterAllAsync(string? trackingNumber, PackageStatus? status);
+        Task<Package?> ExchangeAsync(PackageStatus status, Package package);
     }
 }

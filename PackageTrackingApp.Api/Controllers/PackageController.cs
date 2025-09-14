@@ -12,7 +12,7 @@ namespace PackageTrackingApp.Api.Controllers
 
         public PackageController(IPackageService packageService)
         {
-            _packageService = packageService ?? throw new ArgumentNullException(nameof(packageService)); ;
+            _packageService = packageService ?? throw new ArgumentNullException(nameof(packageService));
         }
 
         [HttpPost]
@@ -21,5 +21,28 @@ namespace PackageTrackingApp.Api.Controllers
             var result = await _packageService.AddPackageAsync(package);
             return Ok(result);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllPackages()
+        {
+            var result = await _packageService.GetAllPackagesAsync();
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPackage(string id)
+        {
+            var result = await _packageService.GetPackageAsync(id);
+            return Ok(result);
+        }
+
+        [HttpPut("{packageId}/status/{status}")]
+        public async Task<IActionResult> UpdatePackageStatus(string packageId, int status)
+        {
+            var result = await _packageService.ExchangeStatusAsync(packageId, status);
+            return Ok(result);
+        }
+
+
     }
 }

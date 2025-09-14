@@ -6,8 +6,9 @@ namespace PackageTrackingApp.Service.Interfaces
     public interface IPackageService
     {
         Task<Result<PackageResponse>> AddPackageAsync(PackageRequest package);
-        Task<List<Package>> GetAllPackagesAsync();
-        Task<List<Package>> FilterAllPackagesAsync(int? trackingNumber, string? status);
-        Task<Package> ExchangeStatusAsync(string packageId, string status, string prevStatus);
+        Task<Result<List<PackageResponse>>> GetAllPackagesAsync();
+        Task<Result<PackageResponse>> GetPackageAsync(string packageId);
+        Task<Result<List<PackageResponse>>> FilterAllPackagesAsync(string? trackingNumber, int? status);
+        Task<Result<PackageResponse>> ExchangeStatusAsync(string packageId, int status);
     }
 }

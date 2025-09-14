@@ -1,8 +1,9 @@
 ﻿using PackageTrackingApp.Domain.Entities;
+using PackageTrackingApp.Service.Interfaces;
 
 namespace PackageTrackingApp.Service.Validators
 {
-    public class IsValidStatusTransition
+    public class IsValidStatusTransition : IValidStatusTransition
     {
         public bool Check(PackageStatus currentStatus, PackageStatus newStatus)
         {

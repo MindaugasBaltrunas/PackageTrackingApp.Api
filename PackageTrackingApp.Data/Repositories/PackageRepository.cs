@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using PackageTrackingApp.Data.Context;
 using PackageTrackingApp.Domain.Entities;
 using PackageTrackingApp.Domain.Interfaces;
+using System;
 
 namespace PackageTrackingApp.Data.Repositories
 {
@@ -28,38 +29,32 @@ namespace PackageTrackingApp.Data.Repositories
             return await _context.Packages.ToListAsync(); ;
         }
 
-        public async Task<List<Package>> FilterAllAsync(int? trackingNumber, string? status)
+        public async Task<Package?> GetAsync(Guid id)
+        {
+
+            return await _context.Packages.Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task<List<Package>> FilterAllAsync(string? trackingNumber, PackageStatus? status)
         {
             var query = _context.Packages.AsQueryable();
 
-            if (trackingNumber.HasValue)
+            if (!string.IsNullOrWhiteSpace(trackingNumber))
             {
-                query = query.Where(p => p.TrackingNumber == trackingNumber.Value.ToString());
+                query = query.Where(p => p.TrackingNumber == trackingNumber);
             }
 
-            if (!string.IsNullOrWhiteSpace(status))
+            if (status.HasValue)
             {
-                var normalizedStatus = status.Trim();
-                if (!Enum.TryParse<PackageStatus>(normalizedStatus, ignoreCase: true, out var parsedStatus))
-                    return new List<Package>();
-
-                query = query.Where(p => p.CurrentStatus == parsedStatus);
+    
+                query = query.Where(p => p.CurrentStatus == status.Value);
 
             }
             return await query.ToListAsync();
         }
 
-        public async Task<Package?> ExchangeAsync(PackageStatus status, Guid id)
-        {
-            var package = await _context.Packages
-             .Include(p => p.StatusHistory)
-             .FirstOrDefaultAsync(x => x.Id == id);
-
-            if (package == null)
-                return null;
-
-            if (package.CurrentStatus == status)
-                return package;
+        public async Task<Package?> ExchangeAsync(PackageStatus status, Package package )
+        {      
 
             package.StatusHistory.Add(new PackageStatusHistory
             {
@@ -75,9 +70,6 @@ namespace PackageTrackingApp.Data.Repositories
 
             return package;
         }
-
-
-
     }
 }
 

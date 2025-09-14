@@ -1,5 +1,4 @@
 ﻿
-using PackageTrackingApp.Domain.Entities;
 
 namespace PackageTrackingApp.Service.Dtos
 {
