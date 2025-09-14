@@ -20,7 +20,7 @@ namespace PackageTrackingApp.Api
 
             // Database Configuration (in-memory for dev/testing)
             services.AddDbContext<AppDbContext>(options =>
-               options.UseInMemoryDatabase("InMemoryDb"));
+               options.UseInMemoryDatabase("InMemoryDb"), ServiceLifetime.Scoped);
 
             // Repository Registration
             services.AddScoped<IPackageRepository, PackageRepository>();

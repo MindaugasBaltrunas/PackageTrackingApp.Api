@@ -11,6 +11,8 @@ namespace PackageTrackingApp.Service.MapperProfile
             CreateMap<PackageRequest, Package>();
 
             CreateMap<Package, PackageResponse>();
+
+            CreateMap<PackageStatusHistory, PackageStatusHistoryResponse>();
         }
 
     }

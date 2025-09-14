@@ -16,6 +16,7 @@ namespace PackageTrackingApp.Service.Services
         private readonly IResultFactory _resultFactory;
         private readonly IBaseRepository<Sender> _senderRepository;
         private readonly IBaseRepository<Recipient> _recipientRepository;
+        private readonly IBaseRepository<PackageStatusHistory> _packegeStausrRepository;
         private readonly IValidStatusTransition _validStatusTransitionValidator;
 
         public PackageService(IPackageRepository packageRepository,
@@ -24,6 +25,7 @@ namespace PackageTrackingApp.Service.Services
             IResultFactory resultFactory,
             IBaseRepository<Sender> senderRepository,
             IBaseRepository<Recipient> recipientRepository,
+            IBaseRepository<PackageStatusHistory> packegeStausrRepository,
             IValidStatusTransition validStatusTransitionValidator
             )
         {
@@ -33,6 +35,7 @@ namespace PackageTrackingApp.Service.Services
             _resultFactory = resultFactory ?? throw new ArgumentNullException(nameof(resultFactory));
             _senderRepository = senderRepository ?? throw new ArgumentNullException(nameof(senderRepository));
             _recipientRepository = recipientRepository ?? throw new ArgumentNullException(nameof(recipientRepository));
+            _packegeStausrRepository = packegeStausrRepository ?? throw new ArgumentNullException(nameof(packegeStausrRepository));
             _validStatusTransitionValidator = validStatusTransitionValidator ?? throw new ArgumentNullException(nameof(validStatusTransitionValidator));
         }
 
@@ -82,7 +85,7 @@ namespace PackageTrackingApp.Service.Services
         }
 
 
-        public async Task<Result<PackageResponse>> GetPackageAsync(string packageId)
+        public async Task<Result<PackageResponse>> GetPackageByIdAsync(string packageId)
         {
             if (!Guid.TryParse(packageId, out var id))
                 return new Result<PackageResponse>("Invalid packageId");
@@ -113,11 +116,20 @@ namespace PackageTrackingApp.Service.Services
                 return new Result<PackageResponse>(response);
             }
 
-            _validStatusTransitionValidator.Check(package.CurrentStatus, newStatus);
+            if (!_validStatusTransitionValidator.Check(package.CurrentStatus, newStatus))
+                return new Result<PackageResponse>("Invalid status transition");
 
-            package.CurrentStatus = newStatus;
+            var statusHistory = new PackageStatusHistory
+            {
+                Id = Guid.NewGuid(),
+                PackageId = package.Id,
+                Status = package.CurrentStatus,
+                ChangedAt = DateTime.UtcNow
+            };
 
-            var updatedPackage = await _packageRepository.ExchangeAsync(newStatus, package);
+            await _packegeStausrRepository.AddAsync(statusHistory);
+
+            var updatedPackage = await _packageRepository.UpdateAsync(newStatus, package);
 
             var result = _mapper.Map<PackageResponse>(updatedPackage);
 

@@ -1,9 +1,7 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using PackageTrackingApp.Data.Context;
 using PackageTrackingApp.Domain.Entities;
 using PackageTrackingApp.Domain.Interfaces;
-using System;
 
 namespace PackageTrackingApp.Data.Repositories
 {
@@ -31,7 +29,9 @@ namespace PackageTrackingApp.Data.Repositories
 
         public async Task<Package?> GetAsync(Guid id)
         {
-            return await _context.Packages.Include(p => p.StatusHistory).Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _context.Packages
+                .Include(p => p.StatusHistory)
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<List<Package>> FilterAllAsync(string? trackingNumber, PackageStatus? status)
@@ -52,24 +52,17 @@ namespace PackageTrackingApp.Data.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<Package?> ExchangeAsync(PackageStatus status, Package package)
+        public async Task<Package?> UpdateAsync(PackageStatus status, Package package)
         {
-
-            package.StatusHistory.Add(new PackageStatusHistory
-            {
-                Id = Guid.NewGuid(),
-                PackageId = package.Id,
-                Status = package.CurrentStatus,
-                ChangedAt = DateTime.UtcNow
-            });
-
             package.CurrentStatus = status;
 
-            await _context.SaveChangesAsync();
+            _context.Attach(package);
+            _context.Entry(package).State = EntityState.Modified;
 
+            await _context.SaveChangesAsync();
             return package;
         }
+
     }
 }
 
- 

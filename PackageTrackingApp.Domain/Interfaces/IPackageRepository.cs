@@ -9,6 +9,6 @@ namespace PackageTrackingApp.Domain.Interfaces
         Task<List<Package>> GetAllAsync();
         Task<Package?> GetAsync(Guid id);
         Task<List<Package>> FilterAllAsync(string? trackingNumber, PackageStatus? status);
-        Task<Package?> ExchangeAsync(PackageStatus status, Package package);
+        Task<Package?> UpdateAsync(PackageStatus status, Package package);
     }
 }

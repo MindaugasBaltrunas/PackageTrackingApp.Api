@@ -32,7 +32,7 @@ namespace PackageTrackingApp.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPackage(string id)
         {
-            var result = await _packageService.GetPackageAsync(id);
+            var result = await _packageService.GetPackageByIdAsync(id);
             return Ok(result);
         }
 
