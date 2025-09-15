@@ -2,7 +2,7 @@
 using PackageTrackingApp.Service.Interfaces;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v1/[controller]")]
 public class BaseController<T> : ControllerBase where T : class
 {
     protected readonly IBaseService<T> _baseService;
