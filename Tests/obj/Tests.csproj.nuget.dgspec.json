@@ -1,0 +1,348 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\Tests\\Tests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Data\\PackageTrackingApp.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Data\\PackageTrackingApp.Data.csproj",
+        "projectName": "PackageTrackingApp.Data",
+        "projectPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Data\\PackageTrackingApp.Data.csproj",
+        "packagesPath": "C:\\Users\\minde\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\minde\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Domain\\PackageTrackingApp.Domain.csproj": {
+                "projectPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Domain\\PackageTrackingApp.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Domain\\PackageTrackingApp.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Domain\\PackageTrackingApp.Domain.csproj",
+        "projectName": "PackageTrackingApp.Domain",
+        "projectPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Domain\\PackageTrackingApp.Domain.csproj",
+        "packagesPath": "C:\\Users\\minde\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\minde\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Service\\PackageTrackingApp.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Service\\PackageTrackingApp.Service.csproj",
+        "projectName": "PackageTrackingApp.Service",
+        "projectPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Service\\PackageTrackingApp.Service.csproj",
+        "packagesPath": "C:\\Users\\minde\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\minde\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Domain\\PackageTrackingApp.Domain.csproj": {
+                "projectPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Domain\\PackageTrackingApp.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[15.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\Tests\\Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\Tests\\Tests.csproj",
+        "projectName": "Tests",
+        "projectPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\Tests\\Tests.csproj",
+        "packagesPath": "C:\\Users\\minde\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\minde\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Data\\PackageTrackingApp.Data.csproj": {
+                "projectPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Data\\PackageTrackingApp.Data.csproj"
+              },
+              "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Domain\\PackageTrackingApp.Domain.csproj": {
+                "projectPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Domain\\PackageTrackingApp.Domain.csproj"
+              },
+              "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Service\\PackageTrackingApp.Service.csproj": {
+                "projectPath": "C:\\Users\\minde\\Desktop\\PRESENT CONNECTION\\backend\\src\\PackageTrackingApp.Service\\PackageTrackingApp.Service.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoFixture.AutoMoq": {
+              "target": "Package",
+              "version": "[4.18.1, )"
+            },
+            "AutoFixture.Xunit2": {
+              "target": "Package",
+              "version": "[4.18.1, )"
+            },
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[15.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.14.1, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.72, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

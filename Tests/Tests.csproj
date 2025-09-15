@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoFixture.AutoMoq" Version="4.18.1" />
+		<PackageReference Include="AutoFixture.Xunit2" Version="4.18.1" />
+		<PackageReference Include="AutoMapper" Version="15.0.1" />
+		<PackageReference Include="FluentValidation" Version="12.0.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+		<PackageReference Include="Moq" Version="4.20.72" />
+		<PackageReference Include="NUnit" Version="4.4.0" />
+		<PackageReference Include="xunit" Version="2.9.3" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.4">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\src\PackageTrackingApp.Data\PackageTrackingApp.Data.csproj" />
+		<ProjectReference Include="..\src\PackageTrackingApp.Domain\PackageTrackingApp.Domain.csproj" />
+		<ProjectReference Include="..\src\PackageTrackingApp.Service\PackageTrackingApp.Service.csproj" />
+	</ItemGroup>
+
+</Project>
