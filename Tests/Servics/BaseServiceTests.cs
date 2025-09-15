@@ -8,7 +8,7 @@ using PackageTrackingApp.Service.Dtos;
 using PackageTrackingApp.Service.Interfaces;
 using PackageTrackingApp.Service.Services;
 
-namespace PackageTrackingApp.Tests.Services
+namespace Tests.Servics
 {
     public class BaseServiceTests
     {

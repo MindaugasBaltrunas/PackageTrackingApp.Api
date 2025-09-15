@@ -9,7 +9,7 @@ using PackageTrackingApp.Service.Dtos;
 using PackageTrackingApp.Service.Interfaces;
 using PackageTrackingApp.Service.Services;
 
-namespace PackageTrackingApp.Tests.Services
+namespace Tests.Servics
 {
     public class PackageServiceTests
     {
@@ -55,6 +55,7 @@ namespace PackageTrackingApp.Tests.Services
                 validStatusTransitionMock.Object
             );
         }
+        //AddPackageAsync
 
         [Fact]
         public async Task AddPackageAsync_WhenValid_PassesPackageWithCreatedAtAndStatusToRepository()
