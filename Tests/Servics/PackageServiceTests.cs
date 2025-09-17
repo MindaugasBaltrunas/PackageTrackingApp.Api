@@ -92,7 +92,7 @@ namespace Tests.Servics
                 .Returns(Mock.Of<Result<PackageResponse>>());
 
             // Act
-            var result = await service.AddPackageAsync(request);
+            await service.AddPackageAsync(request);
 
             // Assert
             packageRepoMock.Verify(r => r.AddAsync(It.IsAny<Package>()), Times.Once);
@@ -130,7 +130,7 @@ namespace Tests.Servics
                 .Returns(Mock.Of<Result<PackageResponse>>());
 
             // Act
-            var result = await service.AddPackageAsync(request);
+            await service.AddPackageAsync(request);
 
             // Assert
             validatorMock.Verify(v => v.ValidateAsync(request, It.IsAny<CancellationToken>()), Times.Once);

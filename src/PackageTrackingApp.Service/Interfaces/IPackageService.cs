@@ -1,5 +1,4 @@
-﻿using PackageTrackingApp.Domain.Entities;
-using PackageTrackingApp.Service.Dtos;
+﻿using PackageTrackingApp.Service.Dtos;
 
 namespace PackageTrackingApp.Service.Interfaces
 {

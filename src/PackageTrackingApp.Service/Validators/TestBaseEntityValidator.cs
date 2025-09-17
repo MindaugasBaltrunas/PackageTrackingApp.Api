@@ -4,6 +4,5 @@ namespace PackageTrackingApp.Service.Validators
 {
     public class TestBaseEntityValidator : BaseEntityValidator<BaseEntity>
     {
-
     }
 }

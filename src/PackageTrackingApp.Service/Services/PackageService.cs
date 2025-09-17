@@ -77,7 +77,7 @@ namespace PackageTrackingApp.Service.Services
         public async Task<Result<List<PackageResponse>>> GetAllPackagesAsync()
         {
             var packages = await _packageRepository.GetAllAsync();
-            if (packages == null || !packages.Any())
+            if (!packages.Any())
                 return new Result<List<PackageResponse>>("packages not found");
 
             var result = _mapper.Map<List<PackageResponse>>(packages);
@@ -152,7 +152,7 @@ namespace PackageTrackingApp.Service.Services
 
             var packages = await _packageRepository.FilterAllAsync(hasTracking ? trackingNumber : null, packageStatus);
 
-            if (packages == null || !packages.Any())
+            if (!packages.Any())
             {
                 return new Result<List<PackageResponse>>("No packages found");
             }

@@ -1,21 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PackageTrackingApp.Service.Interfaces;
 
-[ApiController]
-[Route("api/v1/[controller]")]
-public class BaseController<T> : ControllerBase where T : class
+namespace PackageTrackingApp.Api.Controllers
 {
-    protected readonly IBaseService<T> _baseService;
-
-    public BaseController(IBaseService<T> baseService)
+    [ApiController]
+    [Route("api/v1/[controller]")]
+    public class BaseController<T> : ControllerBase where T : class
     {
-        _baseService = baseService ?? throw new ArgumentNullException(nameof(baseService));
-    }
+        private readonly IBaseService<T> _baseService;
 
-    [HttpPost]
-    public virtual async Task<IActionResult> Add([FromBody] T entity)
-    {
-        var added = await _baseService.AddEntityAsync(entity);
-        return Ok(added);
+        public BaseController(IBaseService<T> baseService)
+        {
+            _baseService = baseService ?? throw new ArgumentNullException(nameof(baseService));
+        }
+
+        [HttpPost]
+        public virtual async Task<IActionResult> Add([FromBody] T entity)
+        {
+            var added = await _baseService.AddEntityAsync(entity);
+            return Ok(added);
+        }
     }
 }

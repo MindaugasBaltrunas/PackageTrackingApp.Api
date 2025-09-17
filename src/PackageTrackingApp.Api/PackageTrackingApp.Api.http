@@ -1,6 +1,17 @@
 @PackageTrackingApp.Api_HostAddress = http://localhost:5013
 
-GET {{PackageTrackingApp.Api_HostAddress}}/weatherforecast/
+####
+POST {{PackageTrackingApp.Api_HostAddress}}/api/v1/Package/
+Accept: application/json
+
+{
+  "trackingNumber": "string",
+  "senderId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "recipientId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+
+#####
+GET {{PackageTrackingApp.Api_HostAddress}}/api/v1/Package/
 Accept: application/json
 
 ###

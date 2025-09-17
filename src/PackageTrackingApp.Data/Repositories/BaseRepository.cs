@@ -6,8 +6,8 @@ namespace PackageTrackingApp.Data.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        protected readonly AppDbContext _context;
-        protected readonly DbSet<T> _dbSet;
+        private readonly AppDbContext _context;
+        private readonly DbSet<T> _dbSet;
 
         public BaseRepository(AppDbContext context)
         {

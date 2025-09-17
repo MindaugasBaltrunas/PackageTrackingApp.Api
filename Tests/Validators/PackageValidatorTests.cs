@@ -1,5 +1,4 @@
-﻿using AutoFixture;
-using PackageTrackingApp.Service.Dtos;
+﻿using PackageTrackingApp.Service.Dtos;
 using PackageTrackingApp.Service.Validators;
 
 namespace Tests.Validators
