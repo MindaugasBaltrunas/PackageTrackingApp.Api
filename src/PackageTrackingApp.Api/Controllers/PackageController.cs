@@ -50,12 +50,11 @@ namespace PackageTrackingApp.Api.Controllers
             return Ok(resul);
         }
 
+        [HttpGet("search/{trackingId}/status/{status}")]
         public async Task<IActionResult> SearchPackage(string trackingId, int status)
         {
             var result = await _packageService.FilterAllPackagesAsync(trackingId, status);
             return Ok(result);
-
-
         }
  
     }
