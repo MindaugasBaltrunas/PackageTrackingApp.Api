@@ -49,6 +49,14 @@ namespace PackageTrackingApp.Api.Controllers
             var resul = await _packageService.GetStatusHistory(id);
             return Ok(resul);
         }
+
+        public async Task<IActionResult> SearchPackage(string trackingId, int status)
+        {
+            var result = await _packageService.FilterAllPackagesAsync(trackingId, status);
+            return Ok(result);
+
+
+        }
  
     }
 }
