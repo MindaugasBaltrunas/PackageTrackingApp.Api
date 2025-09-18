@@ -1,13 +1,11 @@
 ﻿
-namespace PackageTrackingApp.Domain.Entities
+namespace PackageTrackingApp.Service.Dtos
 {
-    public class BaseEntity
+    public class BaseUserDto
     {
         public Guid Id { get; set; }
         public required string Name { get; set; }
         public required string Address { get; set; }
         public required string Phone { get; set; }
-
-        public Package? Package { get; set; }
     }
 }

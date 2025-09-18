@@ -10,7 +10,13 @@ namespace PackageTrackingApp.Service.MapperProfile
         {
             CreateMap<PackageRequest, Package>();
 
-            CreateMap<Package, PackageResponse>();
+            CreateMap<Package, PackageResponse>()
+             .ForMember(dest => dest.Sender, opt => opt.MapFrom(src => src.Sender))
+             .ForMember(dest => dest.Recipient, opt => opt.MapFrom(src => src.Recipient));
+
+            CreateMap<Sender, SenderDto>();
+
+            CreateMap<Recipient, RecipientDto>();
 
             CreateMap<PackageStatusHistory, PackageStatusHistoryResponse>();
         }

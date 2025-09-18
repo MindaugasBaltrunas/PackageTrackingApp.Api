@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PackageTrackingApp.Domain.Entities;
+using System.Reflection.Emit;
 
 namespace PackageTrackingApp.Data.Context
 {
@@ -18,6 +19,22 @@ namespace PackageTrackingApp.Data.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Package>()
+             .HasOne(p => p.Sender)
+             .WithOne(s => s.Package)
+             .HasForeignKey<Package>(p => p.SenderId);
+
+            builder.Entity<Package>()
+             .HasOne(p => p.Recipient)
+             .WithOne(s => s.Package)
+             .HasForeignKey<Package>(p => p.RecipientId);
+
+            builder.Entity<Package>()
+             .HasMany(p => p.StatusHistory)
+             .WithOne(s => s.Package)
+             .HasForeignKey(s => s.PackageId)
+             .OnDelete(DeleteBehavior.Cascade);
+
             base.OnModelCreating(builder);
         }
     }

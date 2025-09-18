@@ -2,5 +2,6 @@
 {
     public class Sender : BaseEntity
     {
+
     }
 }

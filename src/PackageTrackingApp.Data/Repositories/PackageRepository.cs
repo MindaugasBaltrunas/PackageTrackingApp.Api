@@ -24,13 +24,17 @@ namespace PackageTrackingApp.Data.Repositories
 
         public async Task<List<Package>> GetAllAsync()
         {
-            return await _context.Packages.ToListAsync(); 
+            return await _context.Packages
+                .Include(s => s.Sender)
+                .Include(r => r.Recipient).ToListAsync();
         }
 
         public async Task<Package?> GetAsync(Guid id)
         {
             return await _context.Packages
                 .Include(p => p.StatusHistory)
+                .Include(s => s.Sender)
+                .Include(r => r.Recipient)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
