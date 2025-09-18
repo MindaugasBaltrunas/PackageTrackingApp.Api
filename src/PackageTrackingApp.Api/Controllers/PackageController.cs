@@ -55,7 +55,6 @@ namespace PackageTrackingApp.Api.Controllers
         {
             var result = await _packageService.FilterAllPackagesAsync(trackingId, status);
             return Ok(result);
-        }
- 
+        } 
     }
 }
