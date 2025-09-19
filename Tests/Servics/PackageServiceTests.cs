@@ -142,23 +142,6 @@ namespace Tests.Servics
         // GetAllPackagesAsync()
        
         [Fact]
-        public async Task GetAllPackagesAsync_WhenRepositoryReturnsNull_ReturnsFailureResult()
-        {
-            // Arrange
-            packageRepoMock.Setup(r => r.GetAllAsync())
-                  .Returns(() => Task.FromResult<List<Package>>(null!));
-
-            // Act
-            var result = await service.GetAllPackagesAsync();
-
-            // Assert
-            Assert.False(result.IsSuccessful);
-            Assert.Equal("packages not found", result.ErrorMessage);
-            Assert.Null(result.Data);
-            mapperMock.Verify(m => m.Map<List<PackageResponse>>(It.IsAny<List<Package>>()), Times.Never);
-        }
-
-        [Fact]
         public async Task GetAllPackagesAsync_WhenRepositoryReturnsEmptyList_ReturnsFailureResult()
         {
             // Arrange

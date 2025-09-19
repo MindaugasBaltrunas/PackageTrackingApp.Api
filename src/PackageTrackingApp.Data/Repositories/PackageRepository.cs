@@ -40,7 +40,10 @@ namespace PackageTrackingApp.Data.Repositories
 
         public async Task<List<Package>> FilterAllAsync(string? trackingNumber, PackageStatus? status)
         {
-            var query = _context.Packages.AsQueryable();
+            var query = _context.Packages
+                .Include(s => s.Sender)
+                .Include(r => r.Recipient)
+                .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(trackingNumber))
             {

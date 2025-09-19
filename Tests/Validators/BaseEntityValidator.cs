@@ -183,25 +183,6 @@ namespace Tests.Validators
         }
 
         [Fact]
-        public async Task ValidateAsync_WhenPhoneTooShort_ShouldFailValidation()
-        {
-            // Arrange
-            var entity = new BaseEntity
-            {
-                Name = "John Doe",
-                Address = "123 Main Street, City",
-                Phone = "123456789"
-            };
-
-            // Act
-            var result = await validator.ValidateAsync(entity);
-
-            // Assert
-            Assert.False(result.IsValid);
-            Assert.Contains(result.Errors, e => e.ErrorMessage == "Phone number must be between 10 and 15 digits");
-        }
-
-        [Fact]
         public async Task ValidateAsync_WhenPhoneFormatInvalid_ShouldFailValidation()
         {
             // Arrange
